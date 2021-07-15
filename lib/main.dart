@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+var informationTextStyle = TextStyle(fontFamily: 'Oxygen');
 void main() {
   runApp(MyApp());
 }
@@ -22,10 +22,11 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
+          children: <Widget>[
+            Image.asset('images/farm-house.jpg'),
           Container(
               margin: EdgeInsets.only(top: 16.0),
               child: Text('Farm House Lembang',
@@ -33,6 +34,7 @@ class DetailScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Staatliches'
                 ),
               )
           ),
@@ -45,21 +47,25 @@ class DetailScreen extends StatelessWidget {
                   children: <Widget> [
                     Icon(Icons.calendar_today),
                     SizedBox(height: 10.0),
-                    Text('Open Everyday'),
+                    Text('Open Everyday',
+                      style: informationTextStyle,
+                    ),
                   ],
                 ),
                 Column(
                     children: <Widget> [
                       Icon(Icons.access_time),
                       SizedBox(height: 10.0),
-                      Text('09:00-23:00'),
+                      Text('09:00-23:00',
+                        style: informationTextStyle,),
                     ]
                 ),
                 Column(
                     children: <Widget> [
                       Icon(Icons.monetization_on),
                       SizedBox(height: 10.0),
-                      Text('Rp 25.000'),
+                      Text('Rp 25.000',
+                        style: informationTextStyle,),
                     ]
                 )
               ],
@@ -72,9 +78,31 @@ class DetailScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16.0),
             ),
-          )
-        ],
+          ),
+            Container(
+              height: 150,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Image.network('https://media-cdn.tripadvisor.com/media/photo-s/0d/7c/59/70/farmhouse-lembang.jpg'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Image.network('https://media-cdn.tripadvisor.com/media/photo-w/13/f0/22/f6/photo3jpg.jpg'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Image.network('https://media-cdn.tripadvisor.com/media/photo-m/1280/16/a9/33/43/liburan-di-farmhouse.jpg'),
+                    ),
+                     ],
+                )
+            )
+
+          ],
       ),
+
     ),
     );
   }
